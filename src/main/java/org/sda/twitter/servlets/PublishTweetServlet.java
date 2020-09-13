@@ -10,8 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
-import java.sql.Date;
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @WebServlet(name = "Publish", value = {"/publishTweet"})
 public class PublishTweetServlet extends HttpServlet {
@@ -27,9 +26,9 @@ public class PublishTweetServlet extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession(false);
         if (session != null) {
-            String user = (String)session.getAttribute("user");
+            String user = (String) session.getAttribute("user");
             String tweet = req.getParameter("tweetArea");
-            Date publishedTime = new Date(LocalDate.now().toEpochDay());
+            LocalDateTime publishedTime = LocalDateTime.now();
             boolean success = dao.publishTweet(user, tweet, publishedTime);
             if (success) {
                 resp.setStatus(HttpServletResponse.SC_CREATED);
