@@ -1,3 +1,5 @@
+package org.sda.twitter.servlets;
+
 import org.sda.twitter.database.dao.UsersDao;
 
 import javax.servlet.ServletException;
