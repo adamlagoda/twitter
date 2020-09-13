@@ -2,9 +2,11 @@ package org.sda.twitter.database.dao;
 
 import org.sda.twitter.database.configuration.DatasourceConfiguration;
 
-import java.sql.*;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Timestamp;
 import java.time.LocalDateTime;
-import java.time.ZoneOffset;
 
 
 public class TweetsDao {

@@ -2,10 +2,9 @@ package org.sda.twitter.database.dao;
 
 import org.sda.twitter.database.configuration.DatasourceConfiguration;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UsersDao {
 
@@ -26,5 +25,20 @@ public class UsersDao {
             throwables.printStackTrace();
         }
         return false;
+    }
+
+    public List<String> findAll() {
+        List<String> users = new ArrayList<>();
+        try(Connection connection = datasourceConfiguration.getConnection()) {
+            String sql = "SELECT login FROM users;";
+            Statement statement = connection.createStatement();
+            ResultSet resultSet = statement.executeQuery(sql);
+            while (resultSet.next()) {
+                users.add(resultSet.getString(1));
+            }
+        } catch (SQLException throwables) {
+            throwables.printStackTrace();
+        }
+        return users;
     }
 }
