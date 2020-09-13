@@ -27,7 +27,7 @@ public class LoginServlet extends HttpServlet {
         if (found) {
             HttpSession session = req.getSession(true);
             session.setAttribute("user", login);
-            resp.sendRedirect("/profile.jsp");
+            resp.sendRedirect("/twitter/profile.jsp");
         } else {
             resp.sendError(HttpServletResponse.SC_UNAUTHORIZED);
         }
