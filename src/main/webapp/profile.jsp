@@ -5,7 +5,7 @@
     <title>User profile</title>
 </head>
 <body>
-    <h1>Welcome <%= session.getAttribute("user") %></h1
+    <h1>Welcome <%= session.getAttribute("user") %></h1>
     <div>
         <form action="publishTweet" method="post">
             <textarea id="tweetArea" name="tweetArea" rows="5" cols="50">
